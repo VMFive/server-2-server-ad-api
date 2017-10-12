@@ -1,6 +1,6 @@
 # Introduction
 
-此份文件為串接 VM5 廣告投放系統之 API 文件 (v0.1)
+此份文件為串接 VM5 廣告投放系統之 API 文件 (v0.1.2)
 
 # HTTP API Parameters
 
@@ -122,6 +122,10 @@ creativeFormat=richmedia&creativeType=native&ip=8.8.8.8&dnt=0
 * mcc
     * 行動裝置國家代碼 (Mobile Country Code) 
     * Example: 460
+
+* ua
+    * User-Agent
+    * Example: Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1
 
 ----
 
