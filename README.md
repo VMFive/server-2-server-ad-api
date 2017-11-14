@@ -1,6 +1,6 @@
 # Introduction
 
-此份文件為串接 VM5 廣告投放系統之 API 文件 (v0.1.2)
+此份文件為串接 VM5 廣告投放系統之 API 文件 (v0.1.3)
 
 # HTTP API Parameters
 
@@ -63,7 +63,7 @@ creativeFormat=richmedia&creativeType=native&ip=8.8.8.8&dnt=0
 
 * creativeType
     * 版位類型
-    * Example: native/interstitial
+    * Example: native/interstitial/web_interstitial
 
 * ip
     * 用戶 IP (填入 private ip 會被拒絕)
@@ -74,6 +74,10 @@ creativeFormat=richmedia&creativeType=native&ip=8.8.8.8&dnt=0
     * Example: 1 (使用者設定不允許追蹤)
 
 ## 選填欄位
+
+* platform
+    * 使用者平台 (預設為 app)
+    * Example: app/web
 
 * unixMillis
     * 請求時間戳記
