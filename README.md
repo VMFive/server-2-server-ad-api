@@ -1,6 +1,6 @@
 # Introduction
 
-此份文件為串接 VM5 廣告投放系統之 API 文件 (v0.1.3)
+此份文件為串接 VM5 廣告投放系統之 API 文件 (v0.1.4)
 
 # HTTP API Parameters
 
@@ -142,6 +142,9 @@ creativeFormat=richmedia&creativeType=native&ip=8.8.8.8&dnt=0
 ```
 {
     "adContent": {
+        "campaignId": "<campaign id>",
+        "audienceGroupId": "<audiencegroup id>",
+        "creativeId": "<creative id>",
         "html": "<html tag>",
         "icon": "<icon url>",
         "coverImage": "<cover image url>",
