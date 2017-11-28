@@ -1,137 +1,53 @@
 # Introduction
 
-此份文件為串接 VM5 廣告投放系統之 API 文件 (v0.1.4)
+此份文件為串接 VMFive 廣告投放系統之 API 文件 (v0.1.5)
 
 # HTTP API Parameters
 
 ## 範例連結
 
 ```
-<url prefix>?partner=vm5&osType=ios&adId=72f0a6d5-e2a1-4e77-bcfa-b244483f8727&orientation=portrait&lang=zh-tw&netType=wifi&timezone=8&appKey=586b4c115282dd5165fbdf7e&bundleId=com.vm5.sampleapp&appName=VMFive%20Sample%20App&placement=586b590d5282dd5165fbdf9b
-creativeFormat=richmedia&creativeType=native&ip=8.8.8.8&dnt=0
+<api route>?partner=vm5&appName=VMFive%20Sample%20App&bundleId=com.vm5.sampleapp&appKey=586b4c115282dd5165fbdf7e&placement=586b590d5282dd5165fbdf9b&creativeFormat=richmedia&creativeType=native&timezone=8&lang=zh-tw&adId=72f0a6d5-e2a1-4e77-bcfa-b244483f8727&osType=ios&ip=8.8.8.8&orientation=portrait
 ```
 
-## 必要欄位
+## Parameters
 
-* partner
-    * 合作夥伴名稱
-    * Example: vm5   
-
-* osType
-    * 裝置作業系統
-    * Example: ios/android
-
-* adId
-    * 裝置 UUID (使用者 AD ID)
-    * Example: 72f0a6d5-e2a1-4e77-bcfa-b244483f8727
-
-* orientation
-    * 螢幕方向
-    * Example: portrait/landscape
-
-* lang
-    * 裝置語言
-    * Example: en/zh-tw
-
-* netType
-    * 裝置網路類型
-    * Example: wifi/3g/4g
-
-* timezone
-    * 時區
-    * Example: 8
-
-* appKey
-    * App Key (VMFive 於介面註冊後提供)
-    * Example: 586b4c115282dd5165fbdf7e
-
-* bundleId
-    * App Bundle ID (若無法提供，請填 appKey)
-    * Example: com.vm5.sampleapp
-
-* appName
-    * App名稱
-    * Example: VMFive Sample App
-
-* placement
-    * 版位 ID (VMFive 於介面註冊後提供)
-    * Example: 586b590d5282dd5165fbdf9b
-
-* creativeFormat
-    * 廣告格式
-    * Example: vm5/vast/richmedia
-
-* creativeType
-    * 版位類型
-    * Example: native/interstitial/web_interstitial
-
-* ip
-    * 用戶 IP (填入 private ip 會被拒絕)
-    * Example: 8.8.8.8
-
-* dnt
-    * Do not track 設定
-    * Example: 1 (使用者設定不允許追蹤)
-
-## 選填欄位
-
-* platform
-    * 使用者平台 (預設為 app)
-    * Example: app/web
-
-* unixMillis
-    * 請求時間戳記
-    * Example: 1504087073222
-
-* osVersion
-    * 作業系統版本
-    * Example: 10.3.2
-
-* vendor
-    * 裝置製造商
-    * Example: apple/samsung/htc
-
-* deviceType
-    * 裝置類別
-    * Example: phone/tablet
-
-* xPixel
-    * 螢幕寬
-    * Example: 1242
-
-* yPixel
-    * 螢幕高
-    * Example: 2208
-
-* density
-    * 螢幕密度
-    * Example: 1
-
-* lat
-    * 地理位置資訊緯度
-    * Example: 121.5528094
-
-* lng
-    * 地理位置資訊經度
-    * Example: 25.0663508
-
-* carrier
-    * 電信商名稱
-    * Example: 中華電信/CHT
-
-* mnc
-    * 行動裝置網路代碼 (Mobile Network Code)
-    * Example: 7
-
-* mcc
-    * 行動裝置國家代碼 (Mobile Country Code) 
-    * Example: 460
-
-* ua
-    * User-Agent
-    * Example: Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1
-
-----
+| category  | parameter name | required | description                       | example                                  | default value |
+| --------- | -------------- | :------: | --------------------------------- | ---------------------------------------- | ------------- |
+| exchange  | partner        |   yes    | 合作夥伴名稱                            | enum: [vm5, ...]                         |               |
+| app       | platform       |    -     | 使用者平台                             | enum: [app, web]                         | app           |
+| app       | bundleId       |   yes    | App Bundle ID; 若無法提供，請與 VMFive 聯繫 | com.vm5.sampleapp                        |               |
+| app       | appKey         |   yes    | App Key (VMFive 於介面註冊後提供)         | 586b4c115282dd5165fbdf7e                 |               |
+| app       | appName        |   yes    | App名稱                             | VMFive Sample App                        |               |
+| app       | appVersion     |          | App版本                             | 1.0.0                                    |               |
+| app       | placement      |   yes    | 版位 ID (VMFive 於介面註冊後提供)           | 586b590d5282dd5165fbdf9b                 |               |
+| sdk       | sdkName        |          | SDK 名稱                            | ADNSDK                                   |               |
+| sdk       | sdkVersion     |          | SDK 版本                            | 3.0.0                                    |               |
+| sdk       | sdkBuild       |          | SDK Build                         | 20171124                                 |               |
+| campaign  | creativeType   |   yes    | 版位類型                              | enum: [native, interstitial, web_interstitial] |               |
+| campaign  | creativeFormat |   yes    | 廣告格式                              | enum: [vm5, vast, richmedia]             |               |
+| user ctx  | unixMillis     |          | 請求時間戳記                            | 1414213562373                            |               |
+| user ctx  | timezone       |   yes    | 時區                                | 8                                        |               |
+| user ctx  | lang           |   yes    | 裝置語言                              | en / zh-tw                               |               |
+| user ctx  | lat            |          | 地理位置資訊緯度                          | 121.5528094                              |               |
+| user ctx  | lng            |          | 地理位置資訊經度                          | 25.0663508                               |               |
+| user id   | dnt            |          | Do Not Track 設定                   | 0: 使用者設定允許追蹤; 1: 使用者設定不允許追蹤              |               |
+| user id   | adId           |   yes    | 裝置 UUID (使用者 AD ID)               | 72f0a6d5-e2a1-4e77-bcfa-b244483f8727     |               |
+| device    | vendor         |          | 裝置製造商                             | apple / Sony / HTC                       |               |
+| device    | deviceType     |          | 裝置類別                              | enum: [phone, tablet]                    |               |
+| device    | deviceTerm     |          | 裝置名稱                              | iPhone7,1 / Sony D6503                   |               |
+| device os | osType         |   yes    | 裝置作業系統                            | enum: [ios, android]                     |               |
+| device os | osVersion      |          | 裝置作業系統版本                          | 10.3.2                                   |               |
+| network   | ip             |   yes    | 裝置 IP ，若填寫 private ip 將會被拒絕       | 8.8.8.8                                  |               |
+| network   | netType        |          | 裝置網路類型                            | enum: [wifi, 3g, 4g, ...]                |               |
+| network   | mcc            |          | 行動裝置國家代碼 (Mobile Country Code)    | 460                                      |               |
+| network   | mnc            |          | 行動裝置網路代碼 (Mobile Network Code)    | 7                                        |               |
+| network   | carrier        |          | 電信商名稱                             | 中華電信 / CHT                               |               |
+| screen    | orientation    |   yes    | 螢幕方向                              | enum: [portrait, landscape]              |               |
+| screen    | density        |          | 螢幕解析度-密度                          | 1                                        |               |
+| screen    | xPixel         |          | 螢幕解析度-寬度                          | 1080                                     |               |
+| screen    | yPixel         |          | 螢幕解析度-高度                          | 1920                                     |               |
+| web       | ua             |          | User-Agent                        | Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 |               |
 
 # API Response
 
@@ -139,7 +55,7 @@ creativeFormat=richmedia&creativeType=native&ip=8.8.8.8&dnt=0
 
 ### Successful Response with Creative
 
-```
+```json
 {
     "adContent": {
         "campaignId": "<campaign id>",
@@ -149,7 +65,7 @@ creativeFormat=richmedia&creativeType=native&ip=8.8.8.8&dnt=0
         "icon": "<icon url>",
         "coverImage": "<cover image url>",
         "title": "<title text>",
-        "ctaText": "<cta text>",
+        "ctaText": "<call to action text>",
         "clickUrl": "<click url>"
     }
 }
@@ -159,7 +75,7 @@ creativeFormat=richmedia&creativeType=native&ip=8.8.8.8&dnt=0
 
 ### No-Ad Response
 
-```
+```json
 {
     "status": "<message>"
 }
