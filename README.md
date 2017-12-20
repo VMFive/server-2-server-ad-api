@@ -21,9 +21,6 @@
 | app       | appName        |   yes    | App名稱                             | VMFive Sample App                        |               |
 | app       | appVersion     |          | App版本                             | 1.0.0                                    |               |
 | app       | placement      |   yes    | 版位 ID (VMFive 於介面註冊後提供)           | 586b590d5282dd5165fbdf9b                 |               |
-| sdk       | sdkName        |          | SDK 名稱                            | ADNSDK                                   |               |
-| sdk       | sdkVersion     |          | SDK 版本                            | 3.0.0                                    |               |
-| sdk       | sdkBuild       |          | SDK Build                         | 20171124                                 |               |
 | campaign  | creativeType   |   yes    | 版位類型                              | enum: [native, interstitial, web_interstitial] |               |
 | campaign  | creativeFormat |   yes    | 廣告格式                              | enum: [vm5, vast, richmedia]             |               |
 | user ctx  | unixMillis     |          | 請求時間戳記                            | 1414213562373                            |               |
